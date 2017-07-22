@@ -1,5 +1,5 @@
 hexo generate
-cp -R public/* .deploy/qian-feng.github.io
+cp -R public/* deploy/qian-feng.github.io
 cd .deploy/qian-feng.github.io
 git add .
 git commit -m “update”
