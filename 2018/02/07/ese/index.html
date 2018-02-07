@@ -65,8 +65,12 @@ JCO">
 </code></pre> d. You will receive activation code encrypted by your certificate.</li>
 </ol>
 <h3 id="HelloWorld-Applet"><a href="#HelloWorld-Applet" class="headerlink" title="HelloWorld Applet"></a>HelloWorld Applet</h3><p>Please refer <a href="http://www.oracle.com/technetwork/java/embedded/javacard/downloads/index.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/embedded/javacard/downloads/index.html</a> for details.<br><a href="http://www.oracle.com/technetwork/java/embedded/javacard/documentation/intro-139322.html#timelook" target="_blank" rel="external">http://www.oracle.com/technetwork/java/embedded/javacard/documentation/intro-139322.html#timelook</a></p>
-<p>HelloWorld.java is a class ``HelloWorld’’ which extends Applet class. In this class, it defines APDU classes, APDU instructions, etc.<br>    // APDU classes<br>    public static final byte CLA_JCE = (byte)0x80;<br>    public static final byte CLA_COMMAND_CHAINING_MASK = (byte)0x10;</p>
-<pre><code>// APDU instructions
+<p>HelloWorld.java is a class ``HelloWorld’’ which extends Applet class. In this class, it defines APDU classes, APDU instructions, etc. </p>
+<pre><code>// APDU classes
+public static final byte CLA_JCE = (byte)0x80;
+public static final byte CLA_COMMAND_CHAINING_MASK = (byte)0x10;
+
+// APDU instructions
 public static final byte INS_LIST_KEY = (byte)0x00;
 public static final byte INS_SHOW_KEY = (byte)0x01;
 </code></pre><p>It has a function process(APDU apdu) to accept the apdu sent from the client, and redirect them to corresponding functions. </p>
