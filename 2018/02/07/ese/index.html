@@ -64,6 +64,25 @@ JCO">
 <li>Request activation code from NXP as mentioned in the JCOP document:<br> a. Start new Java Card project first time<br> b. Get Serial Number of your JCOP plugin<br> c. Send request to Roland ( roland.hoedl@nxp.com )   which should include Serial Number and your certificate.<pre><code>c.1: download/install GnuPG, genkey and send the pubring.gpg out (http://ysyang21.pixnet.net/blog/post/39389577-how-to-get-jcop-tools-from-nxp)
 </code></pre> d. You will receive activation code encrypted by your certificate.</li>
 </ol>
+<h3 id="HelloWorld-Applet"><a href="#HelloWorld-Applet" class="headerlink" title="HelloWorld Applet"></a>HelloWorld Applet</h3><p>Please refer <a href="http://www.oracle.com/technetwork/java/embedded/javacard/downloads/index.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/embedded/javacard/downloads/index.html</a> for details.<br><a href="http://www.oracle.com/technetwork/java/embedded/javacard/documentation/intro-139322.html#timelook" target="_blank" rel="external">http://www.oracle.com/technetwork/java/embedded/javacard/documentation/intro-139322.html#timelook</a></p>
+<p>HelloWorld.java is a class ``HelloWorld’’ which extends Applet class. In this class, it defines APDU classes, APDU instructions, etc.<br>    // APDU classes<br>    public static final byte CLA_JCE = (byte)0x80;<br>    public static final byte CLA_COMMAND_CHAINING_MASK = (byte)0x10;</p>
+<pre><code>// APDU instructions
+public static final byte INS_LIST_KEY = (byte)0x00;
+public static final byte INS_SHOW_KEY = (byte)0x01;
+</code></pre><p>It has a function process(APDU apdu) to accept the apdu sent from the client, and redirect them to corresponding functions. </p>
+<h3 id="Build-Applet"><a href="#Build-Applet" class="headerlink" title="Build Applet"></a>Build Applet</h3><ol>
+<li>Create new Java Card project</li>
+<li>Go to Eclipse-&gt;Project and press on the Clean.</li>
+<li>The cap file will be generated under bin/…/…/javacard/jceapplet.cap</li>
+</ol>
+<h3 id="Install-Applet"><a href="#Install-Applet" class="headerlink" title="Install Applet"></a>Install Applet</h3><ol>
+<li>/term Remote</li>
+<li>/card</li>
+<li>delete -r APPAID</li>
+<li>/select APPID</li>
+<li>install -i instantAID -q ….. packageAID appAID</li>
+<li>/send APDU command</li>
+</ol>
 
     
     

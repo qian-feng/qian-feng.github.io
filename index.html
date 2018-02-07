@@ -62,93 +62,25 @@
 <li>Request activation code from NXP as mentioned in the JCOP document:<br> a. Start new Java Card project first time<br> b. Get Serial Number of your JCOP plugin<br> c. Send request to Roland ( roland.hoedl@nxp.com )   which should include Serial Number and your certificate.<pre><code>c.1: download/install GnuPG, genkey and send the pubring.gpg out (http://ysyang21.pixnet.net/blog/post/39389577-how-to-get-jcop-tools-from-nxp)
 </code></pre> d. You will receive activation code encrypted by your certificate.</li>
 </ol>
-
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
-</article>
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/2017/07/21/Hello-Hexo/">Hello Hexo</a></h1>
-  
-
-    <time datetime="2017-07-22T00:17:09.000Z">
-  <span class="day">21</span><span class="month">Jul</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      
-    
-    
-    <footer class="meta">
-      
-      
-      
-    </footer>
-    
-  </div>
-  
-</article>
-
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <header>
-    
-  
-    <h1 class="title"><a href="/2017/07/21/hello-world/">Hello World</a></h1>
-  
-
-    <time datetime="2017-07-22T00:13:57.273Z">
-  <span class="day">21</span><span class="month">Jul</span>
-</time>
-  </header>
-  <div class="entry-content">
-    
-      <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<h3 id="HelloWorld-Applet"><a href="#HelloWorld-Applet" class="headerlink" title="HelloWorld Applet"></a>HelloWorld Applet</h3><p>Please refer <a href="http://www.oracle.com/technetwork/java/embedded/javacard/downloads/index.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/embedded/javacard/downloads/index.html</a> for details.<br><a href="http://www.oracle.com/technetwork/java/embedded/javacard/documentation/intro-139322.html#timelook" target="_blank" rel="external">http://www.oracle.com/technetwork/java/embedded/javacard/documentation/intro-139322.html#timelook</a></p>
+<p>HelloWorld.java is a class ``HelloWorld’’ which extends Applet class. In this class, it defines APDU classes, APDU instructions, etc.<br>    // APDU classes<br>    public static final byte CLA_JCE = (byte)0x80;<br>    public static final byte CLA_COMMAND_CHAINING_MASK = (byte)0x10;</p>
+<pre><code>// APDU instructions
+public static final byte INS_LIST_KEY = (byte)0x00;
+public static final byte INS_SHOW_KEY = (byte)0x01;
+</code></pre><p>It has a function process(APDU apdu) to accept the apdu sent from the client, and redirect them to corresponding functions. </p>
+<h3 id="Build-Applet"><a href="#Build-Applet" class="headerlink" title="Build Applet"></a>Build Applet</h3><ol>
+<li>Create new Java Card project</li>
+<li>Go to Eclipse-&gt;Project and press on the Clean.</li>
+<li>The cap file will be generated under bin/…/…/javacard/jceapplet.cap</li>
+</ol>
+<h3 id="Install-Applet"><a href="#Install-Applet" class="headerlink" title="Install Applet"></a>Install Applet</h3><ol>
+<li>/term Remote</li>
+<li>/card</li>
+<li>delete -r APPAID</li>
+<li>/select APPID</li>
+<li>install -i instantAID -q ….. packageAID appAID</li>
+<li>/send APDU command</li>
+</ol>
 
     
     
